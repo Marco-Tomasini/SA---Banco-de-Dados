@@ -126,7 +126,7 @@ CREATE TABLE Alerta_Usuario (
     id_alerta_fk INT,
     id_usuario_fk INT,
     lido BOOLEAN DEFAULT FALSE,
-    PRIMARY KEY (id_alerta, id_usuario),
+    PRIMARY KEY (id_alerta_fk, id_usuario_fk),
     FOREIGN KEY (id_alerta_fk) REFERENCES Alerta(id_alerta),
     FOREIGN KEY (id_usuario_fk) REFERENCES Usuario(id_usuario)
 );
