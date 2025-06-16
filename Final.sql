@@ -1,6 +1,7 @@
-CREATE DATABASE SmartCitiesV3;
+CREATE DATABASE SmartCitiesV4;
 
-USE SmartCitiesV3;
+USE SmartCitiesV4;
+;
 
 -- Tabelas principais
 
@@ -16,10 +17,10 @@ CREATE TABLE Trem (
     modelo VARCHAR(50),
     capacidade_passageiros INT,
     capacidade_carga_kg INT,
-    status_trem VARCHAR(30)
+    status_trem VARCHAR(30),
     quilometragem DECIMAL(10,2) DEFAULT 0,
     tempo_uso DECIMAL(10,2) DEFAULT 0,
-    ultima_manutencao DATETIME
+    ultima_manutencao DATETIME,
     consumo_kwh DECIMAL(10,2)
 );
 
