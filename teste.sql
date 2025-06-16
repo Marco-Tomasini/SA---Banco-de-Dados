@@ -16,7 +16,7 @@ CREATE TABLE Trem (
     modelo VARCHAR(50),
     capacidade_passageiros INT,
     capacidade_carga_kg INT,
-    status VARCHAR(30) -- Em operação, Manutenção, etc.
+    status_trem VARCHAR(30)
 );
 
 CREATE TABLE Usuario (
@@ -52,7 +52,7 @@ CREATE TABLE Viagem (
     data_partida DATETIME,
     data_chegada_prevista DATETIME,
     data_chegada_real DATETIME,
-    status VARCHAR(30),
+    status_viagem VARCHAR(30),
     FOREIGN KEY (id_trem) REFERENCES Trem(id_trem),
     FOREIGN KEY (id_rota) REFERENCES Rota(id_rota)
 );
@@ -99,7 +99,7 @@ CREATE TABLE Ordem_Manutencao (
     data_fechamento DATETIME,
     tipo ENUM('Preventiva', 'Corretiva'),
     descricao TEXT,
-    status ENUM('Aberta', 'Em andamento', 'Fechada'),
+    status_manutencao ENUM('Aberta', 'Em andamento', 'Fechada'),
     FOREIGN KEY (id_trem) REFERENCES Trem(id_trem)
 );
 
@@ -134,7 +134,7 @@ CREATE TABLE Alerta_Usuario (
     FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario)
 );
 
--- Eficiência energética e relatórios
+-- Eficiência e relatórios
 
 CREATE TABLE Consumo_Energia (
     id_consumo INT AUTO_INCREMENT PRIMARY KEY,
@@ -146,7 +146,7 @@ CREATE TABLE Consumo_Energia (
     FOREIGN KEY (id_viagem) REFERENCES Viagem(id_viagem)
 );
 
-CREATE TABLE Relatorio_Mensal (
+CREATE TABLE Relatorios (
     id_relatorio INT AUTO_INCREMENT PRIMARY KEY,
     mes INT,
     ano INT,
@@ -155,3 +155,4 @@ CREATE TABLE Relatorio_Mensal (
     causas_atraso TEXT,
     custo_medio_manutencao DECIMAL(10,2)
 );
+
