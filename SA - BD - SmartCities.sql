@@ -2,14 +2,20 @@ CREATE DATABASE SmartCitiesV2;
 
 USE SmartCitiesV2;
 
+-- Tabelas principais
 CREATE TABLE Estacao (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL
+    id_estacao INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    localizacao VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE Trem (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    identificador VARCHAR(50) NOT NULL
+    id_trem INT AUTO_INCREMENT PRIMARY KEY,
+    identificador VARCHAR(50) NOT NULL,
+    modelo VARCHAR(50),
+    capacidade_passageiros INT,
+    capacidade_carga_kg INT,
+    status_trem VARCHAR(30)
 );
 
 CREATE TABLE Usuario (
@@ -21,6 +27,14 @@ CREATE TABLE Usuario (
 CREATE TABLE Rota (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Consumo_Energia (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_trem INT,
+    data_hora DATETIME,
+    consumo_kwh DECIMAL(10,2),
+    FOREIGN KEY (id_trem) REFERENCES Trem(id)
 );
 
 CREATE TABLE Viagem (
